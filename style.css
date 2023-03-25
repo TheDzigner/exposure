@@ -117,7 +117,7 @@ letter-spacing: 2px;
 .most-liked-post 
 {
     margin: 10% auto 0;
-    width:min(90%,100%);
+    width:min(80%,100%);
     text-align: left;
 }
 
@@ -159,12 +159,7 @@ letter-spacing: 2px;
      background-color: rgba(183,185,190,.4);
    }
  
- .post_card .show_comments_section .comment 
- {
-     width: 100%;
-     margin: 10px;
-     background-color: rgba(183,185,190,.1);
- }
+ 
 
 .most-liked-wrapper  .most-like-card
 {
