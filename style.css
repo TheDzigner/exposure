@@ -1,0 +1,423 @@
+*, 
+::before, 
+::after
+{
+  margin :0;
+  padding :0;
+  box-sizing :border-box ;
+  font-family: 'Varela Round', sans-serif;
+}
+
+body {
+     font-size: 15pt;
+     padding :5px ;
+     height :100vh;
+     width :100%;
+     transition :all .2s ease-in-out ;
+     background :#FFFFFF ;
+}
+
+header 
+{
+    position: fixed;
+    top: 0;
+    background-color: rgba(244,246,252,.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    width: 100%;
+    height:70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    padding: 10px;
+}
+
+header .logo 
+{
+    width:85px;
+    height:85px;
+}
+
+header .logo img 
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+header h1 
+{
+  font-size :2.5em ;
+  padding :10px ;
+  letter-spacing:5px ;
+  font-family: 'Dancing Script', cursive;
+}
+
+header .nav_btn 
+{
+    padding: 10px;
+}
+
+header .nav_btn  button
+{
+   background-color: transparent;
+   border: none;
+   padding: 15px;
+   font-size: 2em;
+   cursor: pointer;
+}
+
+
+.banner 
+{
+    width: 80%;
+    min-height: 350px;
+    margin:15% auto 0;
+    background-color: #a1bbe2;
+    box-shadow: 0 0 7px rgba(3,3,3,.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity  .2s ease-in-out;
+}
+
+.banner.visible 
+{
+    opacity: 1;
+    transition: opacity  1s ease-in-out;
+}
+.banner .details
+{
+    padding: 10px;
+    text-align: center;
+    color: #f4f6fc;
+}
+
+.banner .details  h2
+{
+font-size: 2em;
+padding: 10px;
+
+}
+   
+.banner .details p
+{
+font-size:1em;
+padding: 10px;
+letter-spacing: 2px;
+}
+   
+
+
+.most-liked-post 
+{
+    margin: 10% auto 0;
+    width:90%;
+    text-align: left;
+}
+
+.most-liked-post h2 
+{
+    padding: 15px;
+    letter-spacing: 4px;
+    font-size: 1.5em;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.most-liked-wrapper
+{
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+  
+    overflow: scroll;
+    overflow-y: hidden;
+    scroll-snap-type:x mandatory; 
+    width: 100%;
+    gap: 30px;
+    margin: 1px auto 0;
+    scroll-padding: 10px;
+}
+
+
+
+.most-liked-wrapper::-webkit-scrollbar {
+    width: 10px;
+   }
+ 
+.most-liked-wrapper::-webkit-scrollbar-track {
+    background-color: rgba(183,185,190,.2);
+   }
+ 
+.most-liked-wrapper::-webkit-scrollbar-thumb {
+     background-color: rgba(183,185,190,.4);
+   }
+ 
+ .post_card .show_comments_section .comment 
+ {
+     width: 100%;
+     margin: 10px;
+     background-color: rgba(183,185,190,.1);
+ }
+
+.most-liked-wrapper  .most-like-card
+{
+    flex-shrink: 0;
+    text-align: center;
+    scroll-snap-align: start;
+    min-width: 370px;
+    height:490px;
+    position: relative;
+    margin:10px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(183,185,190,.1);
+    opacity: 0;
+    transition: opacity  1s ease-in-out;
+}
+
+.most-like-card.visible 
+{
+    opacity: 1;
+    transition: opacity  1s ease-in-out;
+}
+.most-like-card img 
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.most-like-card h4 
+{
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    font-size:.7em;
+    background-color: rgba(3,3,3,.9);
+    padding: 5px;
+    border-radius: 5px;
+    color: #f4f6fc;
+}
+
+.most-like-card .show-nbLikes 
+{
+    position: absolute;
+    bottom: 3%;
+    left: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(161,187,226);
+    padding: 10px;
+    border-radius: 9999px;
+}
+
+
+.participants-container
+{
+    margin: 10% auto 0;
+    width: 95%;
+    text-align: left;
+    padding: 10px;
+}
+
+.participants-container h2 
+{
+    padding: 15px;
+    letter-spacing: 4px;
+    font-size: 1.5em;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.participants-container .search-bar
+{
+    width: min(50%,50%);
+    text-align: center;
+    margin: 10px auto 0;
+}
+
+.search-bar input 
+{
+    outline: none;
+    border: 1px solid  rgba(183,185,190,.1);
+
+    width: 100%;
+    height:50px;
+    border-radius: 10px;
+    background-color: rgba(183,185,190,.2);
+    font-size:.7em;
+    text-align: center;
+    box-shadow: 0 0 7px rgba(183,185,190,.3);
+}
+
+.participants-container  .participants_wrapper 
+{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    margin:10px;
+}
+
+
+.participants_wrapper .post_card
+{
+    width: 370px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    position: relative;
+    margin: 10px auto 0;
+}
+
+.participants_wrapper .post_card h3
+{
+    color:#252525;
+    padding: 0 10px  0;
+    display: block;
+    font-size:.8em;
+    text-decoration: underline;
+}
+
+.post_card .post_image 
+{
+    width: 100%;
+    height: 430px;
+    padding: 10px;
+}
+
+.post_card .post_image img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.post_card .action_btns 
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.post_card  .action_btns .like_section 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+   
+}
+
+.post_card  .action_btns .like_section button 
+{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.post_card  .action_btns  button
+{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.post_card .show_comments_section 
+{
+    width: 100%;
+    height: 275px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding: 5px;
+}
+
+.show_comments_section::-webkit-scrollbar {
+   width: 10px;
+  }
+
+  .show_comments_section::-webkit-scrollbar-track {
+   background-color: rgba(183,185,190,.2);
+  }
+
+  .show_comments_section::-webkit-scrollbar-thumb {
+    background-color: rgba(183,185,190,.4);
+  }
+
+.post_card .show_comments_section .comment 
+{
+    width: 100%;
+    margin: 10px;
+    background-color: rgba(183,185,190,.1);
+}
+
+.show_comments_section .comment h5
+{
+    padding: 5px;
+    font-size: .7em;
+}
+
+.show_comments_section .comment p
+{
+    padding: 5px;
+    font-size: .7em;
+}
+
+.show_comments_section .comment span
+{
+    padding: 5px;
+    font-size: .5em;
+    display: block;
+    float: right;
+    text-transform: capitalize;
+}
+
+.post_card .post-comment-section 
+{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post_card  .post-comment-section input 
+{
+    outline: none;
+    flex-grow: 1;
+    height: 35px;
+    border: none;
+    padding: 5px;
+}
+
+.post_card  .post-comment-section button
+{
+    outline: none;
+    border: none;
+    padding: 5px;
+    display: block;
+    background-color: transparent;
+    font-weight:500;
+    cursor: pointer;
+}
