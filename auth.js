@@ -23,16 +23,6 @@ if (activeBtn == 0) {
 })
 
 
-// check for user 
-auth.onAuthStateChanged((user)=>{
-if (user) {
-  document.querySelector(".form_wrapper ").style.display = 'none'
-} else {
-  document.querySelector(".form_wrapper ").style.display = 'block'
-}
-
-})
-
 
 
 
