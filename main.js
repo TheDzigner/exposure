@@ -15,7 +15,9 @@ const firebaseConfig = {
 
   const database = firebase.database()
 
- 
+  const auth = firebase.auth()
+
+
 
 
 
@@ -34,7 +36,7 @@ postCards.forEach((card,index)=>{
   
     // select the like button from each cards 
    const likeBtn = card.querySelector(".likeBtn")
-         likeBtn.setAttribute("data-id",postCards)
+         likeBtn.setAttribute("data-id",postId)
  
    // select the share button from each cards 
    const shareBtn = card.querySelector(".shareBtn")
@@ -54,30 +56,76 @@ postCards.forEach((card,index)=>{
  // like function,save post id in the db,and the current like number
   likeBtn.addEventListener("click",()=>{
       let currentNumLikes = parseInt(displayNumLike.textContent)
-     
+      const postKey = likeBtn.getAttribute("data-id")
+      let userId = ''
+
       const likeRef = database.ref(`post/${postId}/like`)
       const imageRef = database.ref(`post/${postId}/image`)
-  
+     
 
-    if (likeBtn.classList.contains("active")) {
-        likeBtn.classList.remove("active")
-        // prevent the number of like to drecremented from -1
-      if (currentNumLikes <= 0) {
+     
+
+      auth.onAuthStateChanged((user)=>{
         
-      } else {
-        currentNumLikes--
-        displayNumLike.textContent = currentNumLikes
-        likeRef.update({ like : currentNumLikes })
-        imageRef.update({postImage : postImage})
-      }
-  
-    } else {
-        likeBtn.classList.add("active")
-         currentNumLikes++
-         displayNumLike.textContent = currentNumLikes
-         likeRef.update({ like : currentNumLikes })
-         imageRef.update({postImage : postImage})
-    }
+        if (user) {
+
+         userId = auth.currentUser.uid
+
+         const mailVerified = auth.currentUser
+
+         if (mailVerified && mailVerified.emailVerified) {
+         
+          const userLikeRef = database.ref(`liked/${userId}/${postKey}`)
+          
+          if (likeBtn.classList.contains("active")) {
+            likeBtn.classList.remove("active")
+          if (currentNumLikes <= 0) {
+            
+          } else {
+            currentNumLikes--
+            displayNumLike.textContent = currentNumLikes
+            likeRef.update({ like : currentNumLikes })
+            imageRef.update({postImage : postImage})
+
+            database.ref(`liked/${userId}/`).child(postKey).remove()
+          
+          
+                  
+          }
+      
+        } else {
+            likeBtn.classList.add("active")
+             currentNumLikes++
+             displayNumLike.textContent = currentNumLikes
+             likeRef.update({ like : currentNumLikes })
+             imageRef.update({postImage : postImage})
+
+             userLikeRef.set({
+              liked : postId,
+              image : postImage
+             })
+        }
+
+
+
+       
+         } else {
+           console.log("email not verified");
+           alert("please verified your mail address,before liking post")
+           return
+         }
+
+
+      
+       
+
+        } else {
+          console.log("create an account to like post")
+        }
+
+
+      })
+   
 
      })
 
@@ -86,15 +134,93 @@ postCards.forEach((card,index)=>{
   // push comments in the db 
 
 postComment.addEventListener("click",()=>{
+  let senderId = ''
   const commentRef = database.ref(`post/${postId}/comment`)
+
   const commentValue = inputComment.value
-        commentRef.push({comment : commentValue,sender : "john doe" })
        
+       
+ auth.onAuthStateChanged((user)=>{
+
+  if (user) {
+   senderId = auth.currentUser.uid 
+  } else {
+    alert("create an account before positing comments")
+    return
+  }
+
+  const mailVerified = auth.currentUser
+
+  if (mailVerified && mailVerified.emailVerified) {
+    console.log("email verified");
+    const senderRef = database.ref(`users/${senderId}/`)
+
+
+    senderRef.once("value",(snapchot)=>{
+      const data = snapchot.val()
+      const sender = data.username
+      commentRef.push({comment : commentValue,sender : sender })
+     
+    })
+
+  } else {
+    console.log("email not verified");
+    alert("please verified your mail address,before postion comments")
+    return
+  }
+  
+
+ 
+
+
+
+ })
+
+
+
     
 })
 
 
 
 
+// set the active class to the like button 
+
+
+auth.onAuthStateChanged((user)=>{
+
+if (user) {
+ const userId = auth.currentUser.uid
+ const retriveLikesRef = database.ref(`liked/${userId}/`)
+ const likeBtnKey = likeBtn.getAttribute("data-id")
+ retriveLikesRef.once("value",(snapshot)=>{
+ const data = snapshot.val()
+       
+    for (const key in data) {
+    const id = data[key].liked 
+     
+    if (id === likeBtnKey) {
+       likeBtn.classList.add("active")
+    }
+
+
+    }
+
+
+
+
+ })
+
+
+} else {
+  console.log("false")
+}
 
 })
+
+
+
+})
+
+
+

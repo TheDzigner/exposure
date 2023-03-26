@@ -432,7 +432,6 @@ color: red;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display :block;
   width: 300px;
   z-index :40;
   height :auto;
@@ -528,7 +527,7 @@ color: red;
   display: block ;
   outline :none ;
   border :1px solid rgba(183,185,190);
-  padding :10px 20px;
+  padding :15px 20px;
   margin : 10px auto 0 ;
   font-size :.7em ;
   border-radius :5px ;
@@ -582,15 +581,15 @@ color: red;
 
 .form_wrapper #signup button 
 {
-  display: block ;
-  outline :none ;
-  border :1px solid rgba(183,185,190);
-  padding :10px 20px;
-  margin : 10px auto 0 ;
-  font-size :.7em ;
-  background-color:#252525;
-  color: #FFFFFF;
-  border-radius :5px ;
-  box-shadow :0 0 7px rgba(183,185,190,.2);
-  width: 100%;
+    display: block ;
+    outline :none ;
+    border :1px solid rgba(183,185,190);
+    padding :15px 20px;
+    margin : 10px auto 0 ;
+    font-size :.7em ;
+    border-radius :5px ;
+    box-shadow :0 0 7px rgba(183,185,190,.2);
+    background-color:#252525;
+    color: #FFFFFF; 
+    width: 100%;
 }
