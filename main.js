@@ -76,7 +76,7 @@ postCards.forEach((card,index)=>{
          if (mailVerified && mailVerified.emailVerified) {
          
           const userLikeRef = database.ref(`liked/${userId}/${postKey}`)
-          
+
           if (likeBtn.classList.contains("active")) {
             likeBtn.classList.remove("active")
           if (currentNumLikes <= 0) {
@@ -121,6 +121,7 @@ postCards.forEach((card,index)=>{
 
         } else {
           console.log("create an account to like post")
+          document.querySelector(".form_wrapper ").style.display = 'block'
         }
 
 
@@ -137,15 +138,21 @@ postComment.addEventListener("click",()=>{
   let senderId = ''
   const commentRef = database.ref(`post/${postId}/comment`)
 
-  const commentValue = inputComment.value
+  const commentValue = inputComment.value.trim()
        
        
  auth.onAuthStateChanged((user)=>{
+
+ if (!commentValue) {
+  alert("comment cannot be empty")
+  return
+ }
 
   if (user) {
    senderId = auth.currentUser.uid 
   } else {
     alert("create an account before positing comments")
+    document.querySelector(".form_wrapper ").style.display = 'block'
     return
   }
 
@@ -212,13 +219,19 @@ if (user) {
  })
 
 
-} else {
-  console.log("false")
-}
+} 
 
 })
 
 
+
+// display numbers of like
+
+const numLikesRef =  database.ref(`post/${postId}/like`)
+      numLikesRef.once("value",(snapshot)=>{
+        const data = snapshot.val()
+        displayNumLike.textContent = data.like
+      })
 
 })
 
