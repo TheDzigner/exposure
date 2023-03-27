@@ -18,14 +18,33 @@ const firebaseConfig = {
   const auth = firebase.auth()
 
 
+  const  date = new Date();
+  const hours = date.getHours() % 12 || 12
+  const isAm = date.getHours() < 12
+  const minutes = date.getMinutes()
+  const seconds = date.getSeconds()
+  const year = date.getFullYear()
+  const day = date.getDay();
+  const day_number = date.getDate()
+  
+  const month = date.getMonth()
+  
+  const days = 
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+  const months = 
+  ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct', 'Nov','Dec']
 
+  // Jun 28, 2017 at 1:18
 
-
+const timeStamp = 
+`${months[month]} ${day_number}, ${year} At ${hours}:${minutes}`
 
 
 
 // get all post cards form the dom 
 const postCards = document.querySelectorAll(".participants_wrapper .post_card")
+
+
 
 postCards.forEach((card,index)=>{
 
@@ -50,7 +69,7 @@ postCards.forEach((card,index)=>{
   const postComment = card.querySelector(".post-comment-section .postComment")
   const inputComment = card.querySelector(".post-comment-section .inputComment")
 
-
+  const show_comments_section = card.querySelector(".show_comments_section")
 
 
  // like function,save post id in the db,and the current like number
@@ -84,7 +103,13 @@ postCards.forEach((card,index)=>{
           } else {
             currentNumLikes--
             displayNumLike.textContent = currentNumLikes
-            likeRef.update({ like : currentNumLikes })
+
+            likeRef.update({ like : currentNumLikes }).then(()=>{
+
+            }).cath((error)=>{
+              alert("failed to dislike the post",error.message)
+            })
+
             imageRef.update({postImage : postImage})
 
             database.ref(`liked/${userId}/`).child(postKey).remove()
@@ -97,7 +122,12 @@ postCards.forEach((card,index)=>{
             likeBtn.classList.add("active")
              currentNumLikes++
              displayNumLike.textContent = currentNumLikes
-             likeRef.update({ like : currentNumLikes })
+              likeRef.update({ like : currentNumLikes }).then(()=>{
+
+            }).cath((error)=>{
+              alert("failed to like the post",error.message)
+            })
+
              imageRef.update({postImage : postImage})
 
              userLikeRef.set({
@@ -140,7 +170,7 @@ postComment.addEventListener("click",()=>{
 
   const commentValue = inputComment.value.trim()
        
-       
+       console.log(commentValue)
  auth.onAuthStateChanged((user)=>{
 
  if (!commentValue) {
@@ -166,10 +196,42 @@ postComment.addEventListener("click",()=>{
     senderRef.once("value",(snapchot)=>{
       const data = snapchot.val()
       const sender = data.username
-      commentRef.push({comment : commentValue,sender : sender })
+      commentRef.push({comment : commentValue,sender : sender ,date : timeStamp}).then(()=>{
+        alert("comment posted")
+      }).catch((error)=>{
+        alert("failed to post comment",error.message)
+      })
      
-    })
+      commentRef.once("child_added",(snapshot)=>{
+        const data = snapshot.val()
+       const comment = data.comment 
+       const sender = data.sender
+       const date = data.date
 
+       const comment_wrapper = document.createElement("div")
+             comment_wrapper.classList.add("comment")
+
+       const senderComment = document.createElement("h5")
+             senderComment.textContent = sender
+
+       const Comment_text = document.createElement("p")
+             Comment_text.textContent = comment
+
+       const Comment_date = document.createElement("span")
+             Comment_date.textContent = date
+
+       comment_wrapper.append(senderComment)
+       comment_wrapper.append(Comment_text)
+       comment_wrapper.append(Comment_date)
+      
+       show_comments_section.appendChild(comment_wrapper)
+
+      })
+
+
+
+    })
+    inputComment.value = ""
   } else {
     console.log("email not verified");
     alert("please verified your mail address,before postion comments")
@@ -232,6 +294,44 @@ const numLikesRef =  database.ref(`post/${postId}/like`)
         const data = snapshot.val()
         displayNumLike.textContent = data.like
       })
+
+
+
+// display comments 
+
+const retriveCommentsRef = database.ref(`post/${postId}/comment`)
+
+       retriveCommentsRef.once("value",(snapshot)=>{
+              const data = snapshot.val()
+              
+             for (const key in data) {
+         
+              const comment_wrapper = document.createElement("div")
+               comment_wrapper.classList.add("comment")
+  
+         const senderComment = document.createElement("h5")
+               senderComment.textContent = data[key].sender
+  
+         const Comment_text = document.createElement("p")
+               Comment_text.textContent = data[key].comment
+  
+         const Comment_date = document.createElement("span")
+               Comment_date.textContent =data[key].date
+  
+         comment_wrapper.append(senderComment)
+         comment_wrapper.append(Comment_text)
+         comment_wrapper.append(Comment_date)
+        
+         show_comments_section.appendChild(comment_wrapper)
+             }
+                     
+     
+
+
+    
+      
+     })
+
 
 })
 
