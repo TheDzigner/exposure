@@ -113,11 +113,12 @@ if (!executed) {
   if (user) {
   if (isVerified && isVerified.emailVerified) {
     // alert("email verified")
+
   } else {
     alert("email not verified");
   }
 } else {
-  alert("an error occured")
+   document.querySelector(".form_wrapper ").style.display = 'block'
 }
 }
 
