@@ -60,6 +60,7 @@ postCards.forEach((card)=>{
     // select the like button from each cards 
    const likeBtn = card.querySelector(".likeBtn")
          likeBtn.setAttribute("data-id",postId)
+         likeBtn.disabled = true
  
    // select the share button from each cards 
    const shareBtn = card.querySelector(".shareBtn")
@@ -72,6 +73,7 @@ postCards.forEach((card)=>{
   // get the post comment button,the input.
   const postComment = card.querySelector(".post-comment-section .postComment")
   const inputComment = card.querySelector(".post-comment-section .inputComment")
+  postComment.disabled = true
 
   const show_comments_section = card.querySelector(".show_comments_section")
 
@@ -99,7 +101,7 @@ postCards.forEach((card)=>{
 
          if (mailVerified && mailVerified.emailVerified) {
          
-       
+          likeBtn.disabled = false
 
           if (likeBtn.classList.contains("active")) {
             likeBtn.classList.remove("active")
@@ -140,6 +142,7 @@ postCards.forEach((card)=>{
          } else {
            console.log("email not verified");
            alert("please verify your mail address,before liking post")
+           likeBtn.disabled = true
            return
          }
 
@@ -149,6 +152,7 @@ postCards.forEach((card)=>{
 
         } else {
           console.log("create an account to like post")
+          likeBtn.disabled = true
           document.querySelector(".form_wrapper ").style.display = 'block'
         }
 
@@ -187,6 +191,7 @@ postComment.addEventListener("click",()=>{
   const mailVerified = auth.currentUser
 
   if (mailVerified && mailVerified.emailVerified) {
+    postComment.disabled = false
     console.log("email verified");
     const senderRef = database.ref(`users/${senderId}/`)
 
@@ -353,6 +358,20 @@ const retriveCommentsRef = database.ref(`post/${postId}/comment`)
      })
 
 
+
+auth.onAuthStateChanged((user)=>{
+const Usermail = auth.currentUser
+
+if (user && Usermail.emailVerified ) {
+  likeBtn.disabled = false
+  postComment.disabled = false
+} else {
+  likeBtn.disabled = true
+  postComment.disabled = true
+}
+
+
+})
 
 
 
