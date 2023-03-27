@@ -84,8 +84,7 @@ postCards.forEach((card)=>{
 
       const likeRef = database.ref(`post/${postId}/like`)
       const imageRef = database.ref(`post/${postId}/image`)
-     
-
+      const nameRef = database.ref(`post/${postId}/participant`)
      
 
       auth.onAuthStateChanged((user)=>{
@@ -113,6 +112,7 @@ postCards.forEach((card)=>{
             likeRef.update({ like : currentNumLikes })
 
             imageRef.update({postImage : postImage})
+            nameRef.update({participant : participantsName})
 
         const removeLikedKey =  database.ref(`liked_by/${userId}/`)
                                removeLikedKey.child(postId).remove()
@@ -126,6 +126,8 @@ postCards.forEach((card)=>{
 
 
              imageRef.update({postImage : postImage})
+             nameRef.update({participant : participantsName})
+
              userLikeRef.set({
               key : postId
              })
@@ -260,12 +262,16 @@ if (user) {
   checkUserLikedRef.once("value",(snapshot)=>{
   const data = snapshot.val()
  
+ if (data) {
   for (const key in data) {
- if (data[key] === likeBtnKey) {
-  likeBtn.classList.add("active")
+    if (data[key] === likeBtnKey) {
+     likeBtn.classList.add("active")
+    }
+     }
+   
+ } else {
+  return
  }
-  }
-
 
 
   })
@@ -295,7 +301,14 @@ if (user) {
 const numLikesRef =  database.ref(`post/${postId}/like`)
       numLikesRef.once("value",(snapshot)=>{
         const data = snapshot.val()
+        
+
+      if (data) {
         displayNumLike.textContent = data.like
+      } else {
+        return
+      }
+
       })
 
 
@@ -307,7 +320,8 @@ const retriveCommentsRef = database.ref(`post/${postId}/comment`)
        retriveCommentsRef.once("value",(snapshot)=>{
               const data = snapshot.val()
               
-             for (const key in data) {
+           if (data) {
+            for (const key in data) {
          
               const comment_wrapper = document.createElement("div")
                comment_wrapper.classList.add("comment")
@@ -329,6 +343,9 @@ const retriveCommentsRef = database.ref(`post/${postId}/comment`)
              }
                      
      
+           } else {
+            return
+           }
 
 
     

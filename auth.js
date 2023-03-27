@@ -103,14 +103,24 @@ function createUser(userId, email, username) {
     });
 }
 
+let executed = false 
 
 auth.onAuthStateChanged((user)=>{
 const isVerified = auth.currentUser
 
-if (isVerified && isVerified.emailVerified) {
-  alert("email verified");
+if (!executed) {
+  executed = true
+  if (user) {
+  if (isVerified && isVerified.emailVerified) {
+    // alert("email verified")
+  } else {
+    alert("email not verified");
+  }
 } else {
-  alert("email not verified");
+  alert("an error occured")
+}
 }
 
-},{once : true})
+
+
+})
