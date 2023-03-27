@@ -43,15 +43,19 @@ const timeStamp =
 
 // get all post cards form the dom 
 const postCards = document.querySelectorAll(".participants_wrapper .post_card")
+const searchInput = document.getElementById("search-input")
 
 
+postCards.forEach((card)=>{
 
-postCards.forEach((card,index)=>{
+    const randomPos = Math.floor(Math.random() * postCards.length + 1)
+    card.style.order = randomPos
 
    
    // get the postCard id 
    const postId = card.getAttribute("data-id")
    const postImage = card.querySelector(".post_image img").src
+   const participantsName = card.getAttribute("data-name")
   
     // select the like button from each cards 
    const likeBtn = card.querySelector(".likeBtn")
@@ -332,7 +336,27 @@ const retriveCommentsRef = database.ref(`post/${postId}/comment`)
      })
 
 
+
+
+
+
 })
 
 
+// search for participants
+searchInput.addEventListener("input", function() {
+  const value = this.value.trim().toLowerCase();
 
+  postCards.forEach(card => {
+    const participant = card.getAttribute("data-name").toLowerCase()
+    if (value) {
+      if (participant.includes(value)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    } else {
+      card.style.display = "block";
+    }
+  });
+});
