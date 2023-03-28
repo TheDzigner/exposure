@@ -191,6 +191,7 @@ header nav ul li span
     box-shadow: 0 0 7px rgba(183,185,190,.4);
     border-radius: 10px;
     position: relative;
+    padding: 10px;
 }
 
 
@@ -203,7 +204,7 @@ header nav ul li span
     justify-content: center;
     align-items: center;
     height: auto;
-    width: 80%;
+    width:100%;
    }
   
    .card-image 
