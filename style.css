@@ -35,6 +35,7 @@ header
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
 }
 
 header .logo 
@@ -113,12 +114,31 @@ box-shadow: 0 0 10px rgba(183,185,190,.3);
 
 header nav ul li .renting-span
 {
- color: #FFFFFF  !important;
+ color: #FFFFFF;
 border-radius: 10px;
 text-transform: capitalize;
 font-size:1em;
 padding: 15px;
 }
+
+@media screen and (max-width:444px) {
+    header nav ul li .renting-btn
+    {
+      transform: translateX(130px);
+      color: transparent;
+    }
+
+    header nav ul li .renting-span
+    {
+    color: #FFFFFF;
+    left: 140px;
+    z-index: 5;
+   font-size: 1.3em;
+    }
+
+  }
+
+
 
 header nav ul li .account-circle 
 {
@@ -130,6 +150,17 @@ header nav ul li .account-circle
    align-items: center;
    background-color: none;
 }
+
+@media screen and (max-width:570px) {
+    header nav ul li .account-circle 
+    {
+      display: none;
+    }
+
+
+  }
+
+
 
 header nav ul li span
 {
