@@ -375,8 +375,7 @@ header nav ul li span
     border-radius: 10px;
     overflow: hidden;
     background-color: rgba(183,185,190,.1);
-    opacity: 0;
-    transition:  opacity 1s ease-in-out;
+  
 }
 
 .most-like-card.visible 
