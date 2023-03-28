@@ -42,7 +42,7 @@ const timeStamp =
 const card = document.querySelector(".card")
 const postId = card.getAttribute("data-id")
 const postKey = card.getAttribute("data-key")
-
+const shareBtn = document.querySelector(".shareBtn")
 const participantname = document.querySelector(".participant-name")
 const displaynumlike = document.querySelector(".display-num-like")
 const showCards = document.querySelector(".show-comment-cards")
@@ -211,4 +211,24 @@ retriveCommentsRef.once("value",(snapshot)=>{
 
   
 })
+
+
+
+shareBtn.addEventListener("click",function(){
+
+    if (navigator.share) {
+        navigator.share({
+          title : 'Go,vote for me', 
+          url : location.href
+        }).then(()=>{
+        console.log('Thank\'s for sharing')
+        }).catch((error)=>{
+          alert(error.message)
+        })
+      }else {
+        alert('Your browser does not support Web share api')
+      }
+
+})
+
 
