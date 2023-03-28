@@ -365,14 +365,15 @@ header nav ul li span
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
     grid-gap: 1rem;
-   margin: 10px auto 0;
+    margin: 10px auto 0;
 }
 
 
 .participants_wrapper .post_card
 {
     /* width: 370px; */
-    height: 770px;
+    /* height: 770px; */
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
