@@ -232,6 +232,31 @@ header nav ul li span
   }
 
 
+  @media screen and (max-width: 500px) {
+    .banner 
+    {
+     margin: 25% auto 0;
+    }
+
+   .banner .event-details p
+   {
+    font-size: .8em;
+     padding: 5px;
+   }
+
+   .banner  .banner-img 
+   {
+     width:80%;
+     margin: 0;
+   }
+  }
+
+
+
+
+
+
+
 
 
 .most-liked-post 
