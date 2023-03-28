@@ -52,6 +52,8 @@ signUp.addEventListener("submit", function(e) {
       user.sendEmailVerification()
         .then(() => {
           alert("Email verification sent");
+   document.querySelector(".form_wrapper ").style.display = 'block'
+
         })
         .catch((error) => {
           alert("Error sending email verification:", error);
@@ -59,6 +61,7 @@ signUp.addEventListener("submit", function(e) {
 
       // Store user data in database
       createUser(userId, email, username);
+
     })
     .catch((error) => {
       console.log("Error creating user account:", error);
@@ -77,7 +80,7 @@ signIn.addEventListener("submit", function(e) {
   // Authenticate user
   auth.signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
-      const userId = userCredential.user.uid;
+      // const userId = userCredential.user.uid;
       welcome("Welcome back!");
     })
     .catch((error) => {

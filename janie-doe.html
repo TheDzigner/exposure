@@ -27,7 +27,7 @@
     
   
     <script src="/participants.js" defer></script>
-
+   <script src="/auth.js" defer></script>
     <link rel="stylesheet" href="participants.css">
     <title>Exposure / Janie Doe</title>
 </head>
@@ -97,7 +97,7 @@
              </button>
              <span class="display-num-like">0</span>
         </div>
-        <button class="shareBtn material-symbols-outlined" data-key="janne roe">
+        <button class="shareBtn material-symbols-outlined">
            send
         </button>
        </div>
@@ -113,5 +113,86 @@
 </section>
 
     
+<section class="form_wrapper">
+   
+  <div class="logo">
+  <img src="exposure_logo\Exposure 2-01.png" alt="">
+   </div>
+
+
+<div class="switch_btns">
+<button class="active" data-action="signin">
+Sign in
+</button>
+
+<button data-action="signup">
+Sign up
+</button>
+
+</div>
+
+
+
+<form id="signin" class="active" method="get" accept-charset="utf-8" data-action="signin">
+
+<label for="email">
+<p>
+Email
+</p>
+<input type="email" name="" id="email-signin" required >
+</label>
+
+<label for="password">
+<p>
+password
+</p>
+<input type="password" name="" id="password-signin" required>
+</label>
+
+<button type="submit">
+ Sign in
+</button>
+</form>
+
+
+
+
+<form id="signup" method="get" accept-charset="utf-8"  data-action="signup">
+
+<label for="email">
+<p>
+Email
+</p>
+<input type="email" name="" id="email-signup" required>
+</label>
+
+<label for="password">
+<p>
+password
+</p>
+<input type="password" name="" id="password-signup" required>
+</label>
+
+<label for="password">
+<p>
+username
+</p>
+<input type="text" name="" id="username-signup" required>
+</label>
+
+
+
+<button type="submit">
+ Sign up
+</button>
+</form>
+
+
+
+
+
+</section>
+
+
 </body>
 </html>
