@@ -124,16 +124,16 @@ padding: 15px;
 @media screen and (max-width:444px) {
     header nav ul li .renting-btn
     {
-      transform: translateX(130px);
+      transform: translateX(100px); 
       color: transparent;
     }
 
     header nav ul li .renting-span
     {
     color: #FFFFFF;
-    left: 140px;
+    left: 110px;
     z-index: 5;
-   font-size: 1.3em;
+    font-size: 1.3em;
     }
 
   }
