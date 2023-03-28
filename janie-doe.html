@@ -16,8 +16,18 @@
     <link 
     rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   
+    <script 
+    src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+
+    <script
+     src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+
+    <script 
+    src="https://www.gstatic.com/firebasejs/8.8.0/firebase-database.js"></script>
+    
   
-  
+    <script src="/participants.js" defer></script>
+
     <link rel="stylesheet" href="participants.css">
     <title>Exposure / Janie Doe</title>
 </head>
@@ -53,7 +63,7 @@
 
 
 
-<section class="card">
+<section class="card" data-id="image_0234"  data-name="janie doe">
  
    <div class="card-image">
     <button class="back-home material-symbols-outlined"> 
@@ -71,52 +81,18 @@
      <div class="photo">
         <img src="images\image_0234.jpg" alt="">
      </div>
-     <h2>Janie Doe</h2>
+     <h2 class="participant-name"></h2>
     </div>
 
 
 
     <div class="show-comment-cards">
-        <div class="comment">
-            <h5>John doe</h5>
-            <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quisquam inventore obcaecati enim fuga optio omnis assumenda rerum fugiat pariatur.
-            </p>
-            <span>Jun,28 At 11 : 59</span>
-        </div>
-        <div class="comment">
-            <h5>John doe</h5>
-            <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quisquam inventore obcaecati enim fuga optio omnis assumenda rerum fugiat pariatur.
-            </p>
-            <span>Jun,28 At 11 : 59</span>
-        </div>
-        <div class="comment">
-            <h5>John doe</h5>
-            <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quisquam inventore obcaecati enim fuga optio omnis assumenda rerum fugiat pariatur.
-            </p>
-            <span>Jun,28 At 11 : 59</span>
-        </div>
-        <div class="comment">
-            <h5>John doe</h5>
-            <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quisquam inventore obcaecati enim fuga optio omnis assumenda rerum fugiat pariatur.
-            </p>
-            <span>Jun,28 At 11 : 59</span>
-        </div>
-        <div class="comment">
-            <h5>John doe</h5>
-            <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quisquam inventore obcaecati enim fuga optio omnis assumenda rerum fugiat pariatur.
-            </p>
-            <span>Jun,28 At 11 : 59</span>
-        </div>
+      
     </div>
 
      <div class="action_btns">
         <div class="like_section">
-           <button class="likeBtn material-symbols-outlined">
+           <button class="likeBtn material-symbols-outlined" data-id="image_0234">
                favorite
              </button>
              <span class="display-num-like">0</span>
