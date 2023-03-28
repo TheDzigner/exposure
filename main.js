@@ -47,6 +47,9 @@ const searchInput = document.getElementById("search-input")
  // select the share button from each cards 
  const shareBtn = document.querySelectorAll(".shareBtn")
 
+ const most_liked_wrapper = document.querySelector(".most-liked-wrapper")
+
+
 
 postCards.forEach((card)=>{
 
@@ -417,7 +420,7 @@ searchInput.addEventListener("input", function() {
 function winners()
 {
   const participants = database.ref("post")
-
+    
          participants.once("value",(snapshot)=>{
           const data = snapshot.val()
          const keys = Object.values(data)
@@ -429,7 +432,7 @@ function winners()
           // console.log(keys[0].image.postImage)
       
         
-         let html = ""
+          let html = ""
         for (let index = 0; index < 3; index++) {
           const like_num = keys[index].like.like
           const image = keys[index].image.postImage
@@ -448,12 +451,13 @@ function winners()
         </div>
          `
           html += card
+          
         }
-
-        document.querySelector(".most-liked-wrapper").innerHTML = html
-
-
+        most_liked_wrapper.innerHTML = html
+        // console.log(most_liked_wrapper)
+       
 
          })
+       
 }
 winners()
