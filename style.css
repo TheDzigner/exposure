@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 
-
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
 
 *, 
@@ -10,7 +10,7 @@
   margin :0;
   padding :0;
   box-sizing :border-box ;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 body {
@@ -183,7 +183,7 @@ header nav ul li span
 {
     width:90%;
     height:auto;
-    background-color: rgba(236, 212, 127,.5);
+    /* background-color: rgba(236, 212, 127,.5); */
     margin: 15% auto 0;
     display: flex;
     justify-content: center;
@@ -219,8 +219,10 @@ header nav ul li span
 
 .banner .event-details h3
 {
-  font-size:1.5em;
+  font-size:3em;
   padding: 5px;
+  font-weight: 900;
+  font-family: 'Quicksand', sans-serif;
 }
 .banner .event-details p
 {
@@ -375,14 +377,15 @@ header nav ul li span
     border-radius: 10px;
     overflow: hidden;
     background-color: rgba(183,185,190,.1);
-  
+    /* opacity: 0; */
+    transition:  opacity 1s ease-in-out;
 }
 
-.most-like-card.visible 
+/* .most-like-card.visible 
 {
     opacity: 1;
     transition:  opacity 1s ease-in-out;
-}
+} */
 .most-like-card img 
 {
     width: 100%;
