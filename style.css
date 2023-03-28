@@ -352,13 +352,15 @@ header nav ul li span
     overflow: hidden;
     background-color: rgba(183,185,190,.1);
     opacity: 0;
-    transition: opacity  1s ease-in-out;
+    transform: scale(.9);
+    transition:  1s ease-in-out;
 }
 
 .most-like-card.visible 
 {
     opacity: 1;
-    transition: opacity  1s ease-in-out;
+    transform: scale(1.1);
+    transition:  1s ease-in-out;
 }
 .most-like-card img 
 {
