@@ -288,7 +288,52 @@ header nav ul li span
    }
   }
 
+  @media screen and (max-width: 554px) {
 
+    .banner .event-details h3
+    {
+     font-size: 2em;
+      padding: 5px;
+      margin: 0;
+    }
+ 
+   .banner .event-details p
+   {
+    font-size: .8em;
+     padding: 5px;
+     margin: 0;
+   }
+
+   .banner  .banner-img 
+   {
+     width:80%;
+     margin: 0;
+   }
+  }
+  @media screen and (max-width: 412px) {
+
+    .banner .event-details h3
+    {
+      font-size: 1.5em;
+      padding: 5px;
+      margin: 0;
+    }
+ 
+   .banner .event-details p
+   {
+    font-size: .8em;
+     padding: 5px;
+     margin: 0;
+   }
+
+   .banner  .banner-img 
+   {
+     width:80%;
+     margin: 0;
+   }
+  }
+
+  
   @media screen and (max-width: 500px) {
     .banner 
     {
