@@ -410,3 +410,50 @@ searchInput.addEventListener("input", function() {
   });
 });
 
+
+
+// display winners
+
+function winners()
+{
+  const participants = database.ref("post")
+
+         participants.once("value",(snapshot)=>{
+          const data = snapshot.val()
+         const keys = Object.values(data)
+
+          keys.sort((a,b)=>{
+            return b.like.like - a.like.like
+          })
+
+          // console.log(keys[0].image.postImage)
+      
+        
+         let html = ""
+        for (let index = 0; index < 3; index++) {
+          const like_num = keys[index].like.like
+          const image = keys[index].image.postImage
+          const name = keys[index].participant.participant
+          // console.log(like_num,image,name)
+         const card = `
+         <div class="most-like-card">
+         <h4>${name}</h4>
+          <img src="${image}" alt="">
+          <div class="show-nbLikes">
+           <span class="material-symbols-outlined">
+             favorite
+           </span>
+           <p>${like_num}</p>
+          </div>
+        </div>
+         `
+          html += card
+        }
+
+        document.querySelector(".most-liked-wrapper").innerHTML = html
+
+
+
+         })
+}
+winners()
