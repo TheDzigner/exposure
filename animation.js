@@ -1,15 +1,9 @@
 
-const banner = 
-document.querySelector('.banner')
 
-window.addEventListener("load",()=>{
-    banner.classList.add("visible")
-})
+const cardsmostLikedCard =
+document.querySelector('.most-liked-post')
 
-const cards =
-document.querySelectorAll('.most-like-card')
 
-console.log(cards)
 
 
 const para1 = {
@@ -28,6 +22,4 @@ entries.forEach(entry => {
 });
 }
 
-cards.forEach(card =>{
-    observeCards.observe(card)
-})
+    observeCards.observe(cardsmostLikedCard)

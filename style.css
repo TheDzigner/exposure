@@ -366,8 +366,18 @@ header nav ul li span
     margin: 10% auto 0;
     min-width:100%;
     max-width: 80%;
-    text-align: left;
+    opacity: 0;
+    transition: all 2s  ease;
+    transform: translateY(15%);
 }
+
+.most-liked-post.visible
+{
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 2s  ease;
+}
+
 
 .most-liked-post h2 
 {
