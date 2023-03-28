@@ -44,6 +44,8 @@ const timeStamp =
 // get all post cards form the dom 
 const postCards = document.querySelectorAll(".participants_wrapper .post_card")
 const searchInput = document.getElementById("search-input")
+ // select the share button from each cards 
+ const shareBtn = document.querySelectorAll(".shareBtn")
 
 
 postCards.forEach((card)=>{
@@ -62,9 +64,7 @@ postCards.forEach((card)=>{
          likeBtn.setAttribute("data-id",postId)
          likeBtn.disabled = true
  
-   // select the share button from each cards 
-   const shareBtn = card.querySelector(".shareBtn")
-
+  
    // select the html element that will displayt the amount of like number
   const displayNumLike = card.querySelector(".display-num-like")
 
@@ -161,6 +161,19 @@ postCards.forEach((card)=>{
    
 
      })
+
+
+// share participants 
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -396,3 +409,4 @@ searchInput.addEventListener("input", function() {
     }
   });
 });
+
