@@ -179,6 +179,7 @@ header nav ul li span
 }
 
 
+
 .banner 
 {
     width:90%;
@@ -632,6 +633,7 @@ header nav ul li span
 .post_card .show_comments_section 
 {
     width: 100%;
+    height: auto;
     max-height: 275px;
     display: flex;
     justify-content: flex-start;

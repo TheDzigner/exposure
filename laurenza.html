@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link 
+    rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    
+  
+    <link 
+    href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    
+  
+        
+    <link 
+    rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  
+    <script 
+    src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+
+    <script
+     src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+
+    <script 
+    src="https://www.gstatic.com/firebasejs/8.8.0/firebase-database.js"></script>
+    
+  
+    <script src="/participants.js" defer></script>
+   <script src="/auth.js" defer></script>
+    <link rel="stylesheet" href="participants.css">
+    <title>Exposure / Laurenza</title>
+</head>
+<body>
+
+
+    <header>
+        <div class="logo">
+          <div class="img">
+            <img src="exposure_logo\Exposure 2-01.png" alt="exposure logo">
+          </div>
+          <h1>
+            Exposure
+          </h1>
+         </div>
+      
+         <nav>
+         <ul>
+          <li>
+          <span class="renting-span material-symbols-outlined">event_available</span>
+          <button class="renting-btn">Start Renting</button>
+          </li>
+           <li>
+            <button class="account-circle">
+              <img src="images\user-profile-img.jpg" alt="">
+            </button>
+          </li>
+         </ul>
+         </nav>
+      
+      </header>
+
+
+
+
+<section class="card" data-id="laurenza"  data-name="laurenza">
+ 
+   <div class="card-image">
+    <button class="back-home material-symbols-outlined"> 
+       <a href="index.html" target="_parent" class="material-symbols-outlined">
+          first_page
+        </a>
+     </button>
+    
+    <img src="images\laurenza.jpg" alt="">
+   </div>
+
+ <div class="right-card">
+
+    <div class="participant-profile">
+     <div class="photo">
+        <img src="images\laurenza.jpg" alt="">
+     </div>
+     <h2 class="participant-name"></h2>
+    </div>
+
+
+
+    <div class="show-comment-cards">
+      
+    </div>
+
+     <div class="action_btns">
+        <div class="like_section">
+           <button class="likeBtn material-symbols-outlined" data-id="laurenza">
+               favorite
+             </button>
+             <span class="display-num-like">0</span>
+        </div>
+        <button class="shareBtn material-symbols-outlined">
+           send
+        </button>
+       </div>
+
+       <div class="post-comment-section">
+        <input type="text" name="" class="inputComment"  placeholder="Write a comment" value="">
+        <button class="postComment">
+          post
+        </button>
+        </div>
+
+ </div>
+</section>
+
+    
+<section class="form_wrapper">
+   
+  <div class="logo">
+  <img src="exposure_logo\Exposure 2-01.png" alt="">
+   </div>
+
+
+<div class="switch_btns">
+<button class="active" data-action="signin">
+Sign in
+</button>
+
+<button data-action="signup">
+Sign up
+</button>
+
+</div>
+
+
+
+<form id="signin" class="active" method="get" accept-charset="utf-8" data-action="signin">
+
+<label for="email">
+<p>
+Email
+</p>
+<input type="email" name="" id="email-signin" required >
+</label>
+
+<label for="password">
+<p>
+password
+</p>
+<input type="password" name="" id="password-signin" required>
+</label>
+
+<button type="submit">
+ Sign in
+</button>
+</form>
+
+
+
+
+<form id="signup" method="get" accept-charset="utf-8"  data-action="signup">
+
+<label for="email">
+<p>
+Email
+</p>
+<input type="email" name="" id="email-signup" required>
+</label>
+
+<label for="password">
+<p>
+password
+</p>
+<input type="password" name="" id="password-signup" required>
+</label>
+
+<label for="password">
+<p>
+username
+</p>
+<input type="text" name="" id="username-signup" required>
+</label>
+
+
+
+<button type="submit">
+ Sign up
+</button>
+</form>
+
+
+
+
+
+</section>
+
+
+</body>
+</html>
